@@ -2,7 +2,7 @@ package com.example;
 
 public class Groupe {
     private int id;
-    private String nom; // list etudiants ? pas necessaire ici
+    private String nom; 
     private List<Etudiant> etudiants;
 
     public Groupe(int id, String nom) {
