@@ -7,8 +7,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class AppTest {
     @Test
     void testExample() {
-        Etudiant etudiant1 = new Etudiant(1, "Harenah", "Sarobidy", "2024-09-01T00:00:00Z", new HistoriqueGroupe());
-        Etudiant etudiant2 = new Etudiant(2, "Allan", "Tafita", "2025-01-15T00:00:00Z", new HistoriqueGroupe());
+        Etudiant etudiant1 = new Etudiant(1, "Harenah", "Sarobidy", "2024-09-01T00:00:00Z", K3, new HistoriqueGroupe());
+        Etudiant etudiant2 = new Etudiant(2, "Allan", "Tafita", "2025-01-15T00:00:00Z", K4, new HistoriqueGroupe());
         assertEquals("Harenah", etudiant1.getNom());
         assertEquals("Allan", etudiant2.getNom());
 
@@ -28,11 +28,15 @@ class AppTest {
         assertEquals(288000, stats.getTotalMissingFees(listeFrais, Instant.now()));
         assertEquals(0, stats.getTotalPaidByStudent(etudiant1, listeFrais, Instant.now()));
         assertEquals(0, stats.getTotalPaidByStudent(etudiant2, listeFrais, Instant.now()));
-        // vérifier les frais en retard
         assertEquals(288000, stats.getTotalLateFees(listeFrais, Instant.now()));
         assertEquals(1, stats.getLateFees(listeFrais, Instant.now()).size());
         assertTrue(stats.getLateFees(listeFrais, Instant.now()).contains(frais2));
+
+        assertEquals(0, stats.getTotalPaidByStudent(etudiant1, listeFrais, Instant.now()));
+        assertEquals(0, stats.getTotalPaidByStudent(etudiant2, listeFrais, Instant.now()));
     }
+
+    
 
 }
 
